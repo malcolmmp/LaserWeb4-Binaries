@@ -1,7 +1,7 @@
 {
-  "name": "edm-web",
+  "name": "laserweb-builder",
   "version": "1.0.0",
-  "description": "Builds EDMWeb",
+  "description": "Builds LaserWeb",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
@@ -12,20 +12,20 @@
   "postinstall": "electron-rebuild",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rottschaferanders/LaserWeb-binaries.git"
+    "url": "git+https://github.com/LaserWeb/LaserWeb-binaries.git"
   },
-  "author": "Anders Rottschafer",
+  "author": "The LaserWeb Team",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Rottschaferanders/LaserWeb-binaries/issues"
+    "url": "https://github.com/LaserWeb/LaserWeb-binaries/issues"
   },
-  "homepage": "https://github.com/Rottschaferanders/LaserWeb-binaries#readme",
+  "homepage": "https://github.com/LaserWeb/LaserWeb-binaries#readme",
   "dependencies": {
     "axios": "^1.4.0",
     "electron-download-tf": "^4.3.4",
     "electron-squirrel-startup": "^1.0.0",
     "electron-updater": "^2.21.10",
-    "lw.comm-server": "github:Rottschaferanders/lw.comm-server",
+    "lw.comm-server": "github:LaserWeb/lw.comm-server",
     "ncp": "^2.0.0",
     "node-hid": "^2.1.2",
     "serialport": "^11.0.0",
@@ -44,8 +44,8 @@
     "node-gyp": "^9.4.0"
   },
   "build": {
-    "appId": "xyz.edmweb",
-    "productName": "EDMWeb",
+    "appId": "xyz.laserweb",
+    "productName": "LaserWeb",
     "asar": true,
     "files": [
       "**/*"
@@ -76,8 +76,6 @@
   },
   "keywords": [
     "laserweb",
-    "rackrobotics",
-    "edmweb",
     "cncweb",
     "grbl",
     "smoothieware",

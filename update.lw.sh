@@ -26,7 +26,7 @@ fi
 
 echo "dsfafasddas"
 
-git clone https://github.com/Rottschaferanders/LaserWeb4.git $LW_DIR
+git clone https://github.com/LaserWeb/LaserWeb4.git $LW_DIR
 cd $LW_DIR
 git checkout $TARGET_UI_BRANCH
 # nvm install v10.16.3
