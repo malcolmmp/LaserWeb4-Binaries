@@ -1,8 +1,9 @@
 ::
-:: build.win.bat
+:: build-launch.win.bat
 ::
-:: Builds Windows PC distribution of LaserWeb
+:: Checks out and initializes frontend repo and starts local Electron app without building installer
 ::
+
 
 :: Set UnicodeData.txt path to work around https://github.com/dodo/node-unicodetable/issues/16
 set NODE_UNICODETABLE_UNICODEDATA_TXT=%CD%\UnicodeData\UnicodeData.txt
@@ -63,13 +64,13 @@ echo "LaserWeb4 %LW_VERSION%"
 
 CALL .\node_modules\.bin\electron-rebuild
 ::CALL .\node_modules\.bin\build --em.version=%LW_VERSION% -p never --ia32
-CALL yarn run make
+CALL yarn run start
 
 :: Move release file to distribution directory
 ::xcopy dist\*.exe ..\LaserWeb4-Binaries\dist\
-xcopy /y out\make\squirrel.windows\x64\*.exe ..\LaserWeb4-Binaries\dist\
-cd  ..\LaserWeb4-Binaries\dist\
-dir
-cd ..
+::xcopy /y out\make\squirrel.windows\x64\*.exe ..\LaserWeb4-Binaries\dist\
+::cd  ..\LaserWeb4-Binaries\dist\
+::dir
+::cd ..
 
 
