@@ -2,12 +2,14 @@
   "name": "laserweb-builder",
   "version": "1.0.0",
   "description": "Builds LaserWeb",
-  "main": "index.js",
+  "main": "node_modules/lw.comm-server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "newcomms": "yarn upgrade lw.comm-server --latest",
+    "rebuild": "./node_modules/.bin/electron-rebuild"
   },
   "postinstall": "electron-rebuild",
   "repository": {
@@ -20,19 +22,6 @@
     "url": "https://github.com/LaserWeb/LaserWeb-binaries/issues"
   },
   "homepage": "https://github.com/LaserWeb/LaserWeb-binaries#readme",
-  "dependencies": {
-    "axios": "^1.7.2",
-    "electron-download-tf": "^4.3.4",
-    "electron-squirrel-startup": "^1.0.1",
-    "electron-updater": "^2.21.10",
-    "lw.comm-server": "file:../lw.comm-server",
-    "node-static": "*",
-    "ncp": "^2.0.0",
-    "node-hid": "^2.2.0",
-    "serialport": "9.x",
-    "socket.io": "4.x",
-    "yarn": "^1.22.19"
-  },
   "devDependencies": {
     "@electron-forge/cli": "^7.4.0",
     "@electron-forge/maker-deb": "^7.4.0",
@@ -42,12 +31,27 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
     "@electron/rebuild": "^3.6.0",
     "copyfiles": "^1.2.0",
-    "electron": "^25.9.8",
-    "node-gyp": "^9.4.1"
+    "electron": "^26.6.10",
+    "ncp": "^2.0.x",
+    "node-gyp": "^10.1.0"
+  },
+  "dependencies": {
+    "electron-download-tf": "^4.3.4",
+    "electron-squirrel-startup": "^1.0.1",
+    "lw.comm-server": "file:../lw.comm-server",
+    "ip": "^1.1.5",
+    "node-abi": "^3.45.0",
+    "node-hid": "^2.2.0",
+    "node-static": "*",
+    "request": "*",
+    "serialport": "9.x",
+    "socket.io": "4.x",
+    "ws": "8.x",
+    "yarn": "^1.22.19"
   },
   "build": {
     "appId": "xyz.laserweb",
-    "productName": "MalcolmWeb",
+    "productName": "LaserWeb",
     "asar": true,
     "files": [
       "**/*"

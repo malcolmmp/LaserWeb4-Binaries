@@ -1,6 +1,6 @@
 module.exports = {
   packagerConfig: {
-    asar: false,
+    asar: true,
     icon: './build/icon' // no file extension required
   },
   rebuildConfig: {},
@@ -10,6 +10,8 @@ module.exports = {
       config: {
         certificateFile: './cert.pfx',
         certificatePassword: process.env.CERTIFICATE_PASSWORD,
+        setupExe: 'Laserweb4 Installer.exe',
+        name: 'Laserweb4'
       },
     },
     {
