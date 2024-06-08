@@ -7,6 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 0",
     "start": "electron .",
     "make-win": "electron-builder build --windows nsis:x64",
+    "make-mac": "electron-builder build --mac",
+    "make-linux": "electron-builder build --linux appimage:x64",
     "newcomms": "yarn upgrade lw.comm-server --latest",
     "rebuild": "./node_modules/.bin/electron-rebuild"
   },
