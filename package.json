@@ -1,13 +1,12 @@
 {
-  "name": "laserweb-builder",
+  "name": "1-top_of_the_uninstall_list",
   "version": "1.0.0",
   "description": "Builds LaserWeb",
   "main": "node_modules/lw.comm-server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
+    "start": "electron .",
+    "make-win": "electron-builder build --windows nsis:x64",
     "newcomms": "yarn upgrade lw.comm-server --latest",
     "rebuild": "./node_modules/.bin/electron-rebuild"
   },
@@ -23,14 +22,9 @@
   },
   "homepage": "https://github.com/LaserWeb/LaserWeb-binaries#readme",
   "devDependencies": {
-    "@electron-forge/cli": "^7.4.0",
-    "@electron-forge/maker-deb": "^7.4.0",
-    "@electron-forge/maker-rpm": "^7.4.0",
-    "@electron-forge/maker-squirrel": "^7.4.0",
-    "@electron-forge/maker-zip": "^7.4.0",
-    "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
     "@electron/rebuild": "^3.6.0",
     "copyfiles": "^1.2.0",
+    "electron-builder": "24.13.3",
     "electron": "^26.6.10",
     "ncp": "^2.0.x",
     "node-gyp": "^10.1.0"
@@ -78,6 +72,17 @@
     },
     "linux": {
       "category": "Graphics"
+    },
+    "win": {
+      "publisherName": "xyz.laserweb",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
     }
   },
   "keywords": [
