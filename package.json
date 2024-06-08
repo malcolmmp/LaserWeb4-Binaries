@@ -25,7 +25,7 @@
     "@electron/rebuild": "^3.6.0",
     "copyfiles": "^1.2.0",
     "electron-builder": "24.13.3",
-    "electron": "^26.6.10",
+    "electron": "^19.1.9",
     "ncp": "^2.0.x",
     "node-gyp": "^10.1.0"
   },
