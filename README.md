@@ -1,14 +1,13 @@
 # LaserWeb4-Binaries
 
-This is a repo for building complete LaserWeb4 binaries.
+This is a **work in progress** repo for building complete LaserWeb4 binaries.
 
-Tested on Windows 10, MacOS 11.7, and Fedora Linux.
-Use Nodejs 20 and yarn. All npm support has been removed in these branches.
+Successfully tested on Windows 10, MacOS 11.7, and Fedora Linux with Nodejs 20.
+Yarn is required as all npm support has been removed in these branches.
 
 # Build Instructions
 
-#WIP
-Check out LaserWeb4, LaserWeb4-Binaries, and lw.comm-server as sibling directories in the parent folder of your choice, eg 'lwdev'.
+Check out LaserWeb4, LaserWeb4-Binaries, and lw.comm-server as sibling directories in the parent folder of your choice, e.g. 'lwdev'.
 
 ```
 mkdir lwdev
