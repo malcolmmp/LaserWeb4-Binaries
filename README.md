@@ -12,9 +12,9 @@ Check out LaserWeb4, LaserWeb4-Binaries, and lw.comm-server as sibling directori
 ```
 mkdir lwdev
 cd lwdev
-git clone https://github.com/malcolmmp/LaserWeb4/tree/ew-integration
-git clone https://github.com/malcolmmp/LaserWeb4-Binaries/tree/electron-builder
-git clone https://github.com/malcolmmp/lw.comm-server/tree/integration
+git clone -b ew-integration https://github.com/malcolmmp/LaserWeb4.git
+git clone -b electron-builder https://github.com/malcolmmp/LaserWeb4-Binaries.git
+git clone -b integration https://github.com/malcolmmp/lw.comm-server.git
 ```
 
 Build frontend
