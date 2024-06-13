@@ -11,6 +11,8 @@
 # Get-ExecutionPolicy
 #
 
+
+
 # Set UnicodeData.txt path to work around https://github.com/dodo/node-unicodetable/issues/16
 #set NODE_UNICODETABLE_UNICODEDATA_TXT=%CD%\UnicodeData\UnicodeData.txt
 
@@ -41,8 +43,6 @@ Write-Output "Working in $lwDir"
 #CALL yarn
 #CALL npm run installdev
 
-#$yarninstalldev = "yarn run installdev"
-#& $yarninstalldev
 yarn run installdev
 
 # Override files
@@ -52,12 +52,11 @@ yarn run installdev
 # Save Git log to Env variable
 git log --pretty=format:"[%%h](https://github.com/LaserWeb/LaserWeb4/commit/%%H)%%x09%%an%%x09%%ad%%x09%%s" --date=short -10 > git.log.output
 # set /p GIT_LOGS=<git.log.output
-$gitLogs = Get-Content .\git.log.output -Raw
+#$gitLogs = Get-Content .\git.log.output -Raw
 git describe --abbrev=0 --tags > ui_version.output
-# set /p UI_VERSION=<ui_version.output
-$uiVersion = Get-Content .\ui_version.output -Raw
-#set /p SERVER_VERSION=<node_modules\lw.comm-server\version.txt
-$serverVersion = Join-Path -path $lwDir -ChildPath 'node_modules\lw.comm-server\version.txt'
+$uiVersion = Get-Content .\ui_version.output
+$serverVersionLocation = Join-Path -path $lwDir -ChildPath 'node_modules\lw.comm-server\version.txt'
+$serverVersion = Get-Content $serverVersionLocation
 # Bundle LaserWeb app using webpack
 yarn run bundle-dev
 
@@ -67,13 +66,10 @@ Write-Output "Working in $commsDir"
 yarn install
 
 # Copy frontend to comm-server
-# set LW_DIST=..\%LW_DIR%\dist
 $lwDist = Join-Path -path $lwDir -ChildPath 'dist'
-
-########################
-# WORKING THIS FAR
-
-xcopy /i /y "%LW_DIST%" .\app
+$commsAppDir = Join-Path -Path $commsDir -ChildPath 'app'
+Write-Output "Copying frontend to backend"
+Copy-Item "$lwDist\*" -Recurse $commsAppDir -Force
 
 # Home stretch
 Set-Location $binariesDir
@@ -82,30 +78,23 @@ Write-Output "Working in $binariesDir"
 
 #git tag -f %UI_VERSION%-%SERVER_VERSION%
 $laserwebVersion = "$uiVersion-$serverVersion"
-#set LW_VERSION=%UI_VERSION:~1%-%SERVER_VERSION:~-3%
-#xcopy /i /y "%LW_DIST%" .\node_modules\lw.comm-server\app
 
-echo %LW_VERSION%>.\node_modules\lw.comm-server\app\VERSION
+$versionFile = Join-Path -Path $binariesDir -ChildPath 'node_modules\lw.comm-server\app\VERSION'
+Write-Output "Writing version string $laserwebVersion to file $versionFile"
+Out-File -FilePath $versionFile -InputObject $laserwebVersion -Encoding utf8
 
-#echo "LaserWeb4 %LW_VERSION%"
 Write-Output "Laserweb4 $laserwebVersion"
 
 #CALL .\node_modules\.bin\electron-rebuild
 #CALL .\node_modules\.bin\build --em.version=%LW_VERSION% -p never --ia32
 #CALL yarn run make
 
-CALL yarn install
+yarn install
 # Copy new comm-server for local dev
-CALL yarn newcomms
-CALL yarn rebuild
-CALL yarn make-win
+yarn newcomms
+yarn rebuild
+yarn make-win
 
 # List build artifacts
-dir dist
-# Move release file to distribution directory
-#xcopy dist\*.exe ..\LaserWeb4-Binaries\dist\
-#cd  ..\LaserWeb4-Binaries\dist\
-#dir
-#cd ..
-
+Get-ChildItem "dist"
 
